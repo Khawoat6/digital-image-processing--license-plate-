@@ -7,15 +7,13 @@ def convertImage(image):
     canny = cv2.Canny(blur, 100, 200)
     return canny
 
-img = cv2.imread("image2.jpg")
+img = cv2.imread("image1.jpg")
 processed_img = convertImage(img)
 original_img = img.copy()
 
 contour_img = processed_img.copy()
 _ , contours, _ = cv2.findContours(contour_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
-# print(contours)
-
 
 for contour in contours:
     p = cv2.arcLength(contour, True)
